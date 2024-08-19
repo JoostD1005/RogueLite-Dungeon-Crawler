@@ -19,6 +19,7 @@
       <Filter>template code</Filter>
     </ClInclude>
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Tilemap.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template code">
