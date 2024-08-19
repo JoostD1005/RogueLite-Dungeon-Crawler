@@ -1,4 +1,5 @@
 #pragma once
+#include "Player.hpp"
 
 namespace Tmpl8 {
 
@@ -17,6 +18,7 @@ public:
 	void KeyDown( int key ) { /* implement if you want to handle keys */ }
 private:
 	Surface* screen;
+	Player player = Player("assets/Player.png", 1);
 };
 
 }; // namespace Tmpl8
