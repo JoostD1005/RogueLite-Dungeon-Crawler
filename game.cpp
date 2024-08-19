@@ -26,9 +26,7 @@ namespace Tmpl8
 		else
 		{
 			std::cout << "fuck you!";
-		}
-
-		bool af = true;
+		};
 		
 	}
 };
