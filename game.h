@@ -19,6 +19,11 @@ public:
 private:
 	Surface* screen;
 	Player player = Player("assets/Player.png", 1);
+
+	Tmpl8::vec2 playerStartingPos = 0;
+
+	Tmpl8::vec2 cameraOffset = { 0, 0 };
+	//const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
 };
 
 }; // namespace Tmpl8
