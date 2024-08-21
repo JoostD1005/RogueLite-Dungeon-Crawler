@@ -44,7 +44,7 @@ namespace Tmpl8
 		{
 			screen->Clear(0xffffff);
 		}*/
-
+		tilemap.Draw(screen);
 		player.Draw(screen);
 
 	}

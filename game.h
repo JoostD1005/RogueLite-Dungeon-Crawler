@@ -1,5 +1,7 @@
 #pragma once
 #include "Player.hpp"
+#include "Tilemap.hpp"
+
 
 namespace Tmpl8 {
 
@@ -19,6 +21,7 @@ public:
 private:
 	Surface* screen;
 	Player player = Player("assets/Player.png", 1);
+	Tilemap tilemap;
 
 	Tmpl8::vec2 playerStartingPos = 0;
 
