@@ -11,7 +11,8 @@ class Tilemap
 public:
 
 	void SetCameraOffset(Tmpl8::vec2 offset) { cameraOffset = offset; }
-	void TileOffset();
+	int TileOffsetX();
+	int TileOffsetY();
 
 	void Draw(Tmpl8::Surface* screen);
 

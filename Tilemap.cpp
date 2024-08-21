@@ -1,16 +1,23 @@
 #include "Tilemap.hpp"
-
+#include <iostream>
 
 #define TILEWIDTH 50
 
 
-void Tilemap::TileOffset()
+int Tilemap::TileOffsetX()
 {
 	float x = cameraOffset.x;
-	float y = cameraOffset.y;
+	int row = static_cast<int>(std::round( x / TILEWIDTH ));
 
-	int row = x / TILEWIDTH;
-	int col = y / TILEWIDTH;
+	return row;
+}
+
+int Tilemap::TileOffsetY()
+{
+	float y = cameraOffset.y;
+	int col = static_cast<int>(std::round(y / TILEWIDTH));
+
+	return col;
 }
 
 
@@ -18,9 +25,9 @@ void Tilemap::TileOffset()
 
 void Tilemap::Draw(Tmpl8::Surface* screen)
 {
-	for (int y = 0; y < 10; y++)
+	for (int y = 0 + TileOffsetY(); y < 10 + TileOffsetY(); y++)
 	{
-		for (int x = 0 ; x < 16 ; x++)
+		for (int x = 0 + TileOffsetX(); x < 16 + TileOffsetX() ; x++)
 		{
 			int tx = map[y][x * 3] - 'a';
 			int ty = map[y][x * 3 + 1] - 'a';

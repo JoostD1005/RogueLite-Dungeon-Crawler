@@ -20,32 +20,36 @@ namespace Tmpl8
 
 	void Game::Tick(float deltaTime)
 	{
+		switch (state)
+		{
+		case State::start:
+			StartScreen(deltaTime);
+			break;
+		case State::game:
+			GameScreen(deltaTime);
+			break;
+		case State::gameOver:
+			GameOverScreen(deltaTime);
+			break;
+		}
+
+	}
+
+	void Game::StartScreen(float deltaTime)
+	{
 		screen->Clear(0);
+	}
 
-		/*if (currentKeyStates[SDL_SCANCODE_UP]) {
-			cameraOffset.y += 5;  // Move the camera down
-		}
-		if (currentKeyStates[SDL_SCANCODE_DOWN]) {
-			cameraOffset.y -= 5;  // Move the camera up
-		}
-		if (currentKeyStates[SDL_SCANCODE_LEFT]) {
-			cameraOffset.x += 5;  // Move the camera right
-		}
-		if (currentKeyStates[SDL_SCANCODE_RIGHT]) {
-			cameraOffset.x -= 5;  // Move the camera left
-		}
-
-		if (cameraOffset.y == 10 || cameraOffset.y == -10)
-		{
-			screen->Clear(0xffffff);
-		}
-
-		if (cameraOffset.x == 10 || cameraOffset.x == -10)
-		{
-			screen->Clear(0xffffff);
-		}*/
+	void Game::GameScreen(float deltaTime)
+	{
+		screen->Clear(0);
 		tilemap.Draw(screen);
 		player.Draw(screen);
+	}
 
+	void Game::GameOverScreen(float deltaTime)
+	{
+		screen->Clear(0);
+	
 	}
 };
