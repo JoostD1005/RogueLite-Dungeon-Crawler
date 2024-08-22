@@ -20,7 +20,7 @@ public:
 private:
 	Tmpl8::vec2 cameraOffset = 0;
 	
-	Tmpl8::Surface tiles = Tmpl8::Surface("assets/testTile.png");
+	Tmpl8::Surface tiles = Tmpl8::Surface("assets/testTile2.png");
 
 	char map[11][48] = {
 		"aa ab aa ab aa ab ab aa ab aa ab aa ab aa ab aa",

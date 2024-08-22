@@ -1,8 +1,7 @@
 #include "Tilemap.hpp"
 #include <iostream>
 
-#define TILEWIDTH 50
-
+#define TILEWIDTH 32
 
 int Tilemap::TileOffsetX()
 {
@@ -25,15 +24,32 @@ int Tilemap::TileOffsetY()
 
 void Tilemap::Draw(Tmpl8::Surface* screen)
 {
-	for (int y = 0 + TileOffsetY(); y < 10 + TileOffsetY(); y++)
+	int tileOffsetX = TileOffsetX();
+	int tileOffsetY = TileOffsetY();
+
+
+	int tilesAcross = ScreenWidth / TILEWIDTH;
+	int tilesDown = ScreenHeight / TILEWIDTH;
+
+
+	for (int y = tileOffsetY; y < tilesDown + tileOffsetY; y++)
 	{
-		for (int x = 0 + TileOffsetX(); x < 16 + TileOffsetX() ; x++)
+		if (y < 0 || y >= 1000) continue;
+
+		for (int x = tileOffsetX; x < tilesAcross + tileOffsetX ; x++)
 		{
+
+			if (x < 0 || x >= 1500) continue;
+
 			int tx = map[y][x * 3] - 'a';
 			int ty = map[y][x * 3 + 1] - 'a';
 
-			Tmpl8::Pixel* src = tiles.GetBuffer() + tx * TILEWIDTH + ty * TILEWIDTH * 50;
-			Tmpl8::Pixel* dst = screen->GetBuffer() + x * TILEWIDTH + y * TILEWIDTH * 800;
+
+			if (tx < 0 || ty < 0) continue;
+
+
+			Tmpl8::Pixel* src = tiles.GetBuffer() + tx * TILEWIDTH + ty * TILEWIDTH * tiles.GetWidth();
+			Tmpl8::Pixel* dst = screen->GetBuffer() + (x - tileOffsetX) * TILEWIDTH + (y - tileOffsetY) * TILEWIDTH * ScreenWidth;
 
 			for (int i = 0; i < TILEWIDTH; i++)
 			{
@@ -41,8 +57,9 @@ void Tilemap::Draw(Tmpl8::Surface* screen)
 				{
 					dst[j] = src[j];
 				}
-					src += 50;
-					dst += 800;
+
+				src += tiles.GetWidth();
+				dst += ScreenWidth;
 			}
 		}
 	}

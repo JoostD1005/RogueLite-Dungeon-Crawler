@@ -40,16 +40,91 @@ namespace Tmpl8
 		screen->Clear(0);
 	}
 
+
+
+
+
+
 	void Game::GameScreen(float deltaTime)
 	{
 		screen->Clear(0);
+
+		if (isWDown)
+			cameraOffset.y -= 5;
+		if (isSDown)
+			cameraOffset.y += 5;
+		if (isADown)
+			cameraOffset.x -= 5;
+		if (isDDown)
+			cameraOffset.x += 5;
+
+
 		tilemap.Draw(screen);
 		player.Draw(screen);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	void Game::GameOverScreen(float deltaTime)
 	{
 		screen->Clear(0);
 	
+	}
+
+
+	void Game::KeyUp(int key)
+	{
+
+		switch (key)
+		{
+		case SDL_SCANCODE_W:
+			isWDown = false;
+			break;
+		case SDL_SCANCODE_A:
+			isADown = false;
+			break;
+		case SDL_SCANCODE_S:
+			isSDown = false;
+			break;
+		case SDL_SCANCODE_D:
+			isDDown = false;
+			break;
+		}
+	}
+
+
+	void Game::KeyDown(int key)
+	{
+
+		switch (key)
+		{
+		case SDL_SCANCODE_W:
+			isWDown = true;
+			break;
+		case SDL_SCANCODE_A:
+			isADown = true;
+			break;
+		case SDL_SCANCODE_S:
+			isSDown = true;
+			break;
+		case SDL_SCANCODE_D:
+			isDDown = true;
+			break;
+		}
 	}
 };

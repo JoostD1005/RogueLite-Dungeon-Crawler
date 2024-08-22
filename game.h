@@ -34,8 +34,8 @@ public:
 	void MouseUp( int button ) { /* implement if you want to detect mouse button presses */ }
 	void MouseDown( int button ) { /* implement if you want to detect mouse button presses */ }
 	void MouseMove( int x, int y ) { /* implement if you want to detect mouse movement */ }
-	void KeyUp( int key ) { /* implement if you want to handle keys */ }
-	void KeyDown( int key ) { /* implement if you want to handle keys */ }
+	void KeyUp(int key);
+	void KeyDown(int key);
 
 
 
@@ -52,7 +52,11 @@ private:
 	Tmpl8::vec2 playerStartingPos = 0;
 
 	Tmpl8::vec2 cameraOffset = { 0, 0 };
-	//const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+	
+	bool isWDown = false;
+	bool isADown = false;
+	bool isSDown = false;
+	bool isDDown = false;
 };
 
 }; // namespace Tmpl8
